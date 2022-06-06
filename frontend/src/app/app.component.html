@@ -1,0 +1,19 @@
+<p>
+  <mat-toolbar color="primary">
+    <span>Password manager</span>
+    <span class="toolbar-spacer"></span>
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input type="input" [(ngModel)]="searchText" matInput>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </mat-toolbar>
+</p>
+
+<div class="buttons">
+<button  mat-fab color="primary" title="Add new password" (click)="openEditDialog({id: null, url: '', name: '', username: '', password: ''})"><mat-icon>add</mat-icon></button>
+</div>
+
+<div>
+  <password-card *ngFor="let passwordCard of passwordCards$ | async | filter : 'name' : searchText" [passwordCard]="passwordCard"></password-card>
+</div>
